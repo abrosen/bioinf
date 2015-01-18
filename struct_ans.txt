@@ -1,0 +1,54 @@
+A protein is a sequence of amino-acids, ranging from 50-2000 in length.  
+Upon completion, they fold into a unqiue shape in a very short period of time
+
+Alpha-keratin -> hair/nails
+enzymes -> digestive processes
+antibodies -> latch onto foreign objects
+hemoglobin -> carries oxygen
+
+We learn how they are supposed to act normally and what they do under abnormal operation.
+
+We don't precisely understand how proteins fold.
+For a given sequence of amino acids, we cannot predict with accuracy how they fold into their characteristic structure.
+
+
+
+
+
+We mean a detailed model of the protein.  Detailed down to the atoms and the angles between.
+
+The art of blasting crystals with xrays.  
+We grow crystal containing trillions of identical molecules then blast it with x-rays.
+The xrays have a small enough wavelength that they can fit between atoms, which allows us to create a digital image of the molecule.
+
+Syncotron produce large quanities of xray radiation.
+The wavelength of radiation is ``tunable'' to the size of specifiend atoms.
+
+The ribosome is the cellular ``factory'' which produces protiens.
+Antibiotics work by targeting bacterial ribosomes while leaving our unaffected.
+
+
+
+
+NMR advantage -  can do it to solutions, so no need to build crystals, which is hard.  
+Reveals other aspects, such as flexability
+disadvantage -  can't target as large of structures, newer and not as refined
+
+NOESY reveals distances between protons
+
+understanding how proteins fold may reveal how to prevent misfolding, the suspect of many diseases.
+
+
+
+Structure based drug design allows drug developers to skip blind trail and error.
+They use computer models of the structure to see how it will interact with molecules.
+
+Scientists discovered the active site in protease's structure.
+They created a molecule to bind into it and block replication.
+
+COX-1 contains isoleucine where COX-2 contain Valine, and the drug can bind to Valine.
+
+Natural selection.
+Viruses produce multiple mutations during the copy phase, which might be resistant to the drug.
+The drug wipes out the nonresistant copies and selects for resistance.  
+Soon, all that remains is the resistant strain.
