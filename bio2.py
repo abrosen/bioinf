@@ -53,7 +53,7 @@ def findHISTags(sequences):
         m = p.match(seq.data)
         if m is not None:
             tag =  m.group()
-            if True or tag not in tags:
+            if tag not in tags:
                 tags.append(tag)
     return tags
 
@@ -63,7 +63,7 @@ def main():
     print numUniqueWordsInSentences(["hello","from","mars"])
     s= loadFasta("pdbaanr")
     tags = findHISTags(s)
-    print len(tags)
+    print len(tags), "unique HIS tags"
 
 if __name__ == "__main__":
     main()
