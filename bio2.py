@@ -22,6 +22,7 @@ def numUniqueWordsInSentences(sentences):
 
 
 def loadFasta(filename):
+    """Loads Fasta sperated by newlines"""
     fasta =  open(filename, 'r')
     line =  fasta.readline()
     sequences = []
@@ -30,7 +31,7 @@ def loadFasta(filename):
     i =  0
     while line != "":
         line=line.strip()
-        if line == "" and header != "":
+        if line == ""  and header != "":
             data = "".join(data)
             sequences.append(Sequence(header,data))
             header = ""
@@ -47,8 +48,10 @@ def loadFasta(filename):
     return sequences
 
 def findHISTags(sequences):
+    """There's some abigous wording ;_; """
     tags = []
-    pattern = '^[^H]{2,3}H{5,8}'
+    #pattern = '^[^H]{2,3}H{5,8}'  
+    pattern =  '^.{0,3}H{5,8}'
     p = re.compile(pattern)
     for seq in sequences:
         m = p.match(seq.data)
@@ -59,12 +62,12 @@ def findHISTags(sequences):
     return tags
 
 def main():
-    print numUniqueChars("hello")
-    print numUniqueWords("Hello to all my friends out out there.")
-    print numUniqueWordsInSentences(["hello","from","mars"])
+    #print numUniqueChars("hello")
+    #print numUniqueWords("Hello to all my friends out out there.")
+    #print numUniqueWordsInSentences(["hello","from","mars"])
     s= loadFasta("pdbaanr")
     tags = findHISTags(s)
-    print len(tags), "unique HIS tags"
+    print len(tags), "unique HIS tags found!"
 
 if __name__ == "__main__":
     main()
