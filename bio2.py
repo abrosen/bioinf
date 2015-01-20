@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import re
 class Sequence(object):
     def __init__(self, comment,contents):
