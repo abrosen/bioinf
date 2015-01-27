@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from Bio import SeqIO
 import re
 class Sequence(object):
     def __init__(self, comment,contents):
@@ -71,5 +72,14 @@ def main():
     tags = findHISTags(s)
     print len(tags.keys()), "unique HIS tags found!"
     print tags
+    
+    sequences = []
+    for record in SeqIO.parse('pdbaanr','fasta'):
+        seq = Sequence(record.id, record.seq)
+        sequences.append(seq)
+    tags = findHISTags(s)
+    print len(tags.keys()), "unique HIS tags found!"
+    print tags
+    
 if __name__ == "__main__":
     main()
