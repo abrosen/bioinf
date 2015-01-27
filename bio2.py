@@ -49,16 +49,18 @@ def loadFasta(filename):
 
 def findHISTags(sequences):
     """There's some abigous wording ;_; """
-    tags = []
+    tags = {}
     #pattern = '^[^H]{2,3}H{5,8}'  
-    pattern =  '^.{0,3}H{5,8}'
+    pattern =  '^[^H]{0,3}H{5,8}'
     p = re.compile(pattern)
     for seq in sequences:
         m = p.match(seq.data)
         if m is not None:
             tag =  m.group()
             if tag not in tags:
-                tags.append(tag)
+                tags[tag] = 1
+            else:
+                tags[tag] = tags[tag] +1
     return tags
 
 def main():
@@ -67,7 +69,7 @@ def main():
     #print numUniqueWordsInSentences(["hello","from","mars"])
     s= loadFasta("pdbaanr")
     tags = findHISTags(s)
-    print len(tags), "unique HIS tags found!"
-
+    print len(tags.keys()), "unique HIS tags found!"
+    print tags
 if __name__ == "__main__":
     main()
