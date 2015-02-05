@@ -1,12 +1,14 @@
 #!/usr/bin/python
-from Bio import SeqIO
+#from Bio import SeqIO
 import re
 class Sequence(object):
     def __init__(self, comment,contents):
         self.header = comment
-        self.data = contents
+        self.seq = contents
     def __str__(self):
-        return self.header + '\n' + self.data
+        return self.header + '\n' + "".join(self.seq)
+    def __eq__(self, x):
+        return  self.seq == x.seq
 
 def numUniqueChars(s):
     return len(set(s))
@@ -55,7 +57,7 @@ def findHISTags(sequences):
     pattern =  '^[^H]{0,3}H{5,8}'
     p = re.compile(pattern)
     for seq in sequences:
-        m = p.match(seq.data)
+        m = p.match(seq.seq)
         if m is not None:
             tag =  m.group()
             if tag not in tags:
@@ -68,16 +70,19 @@ def main():
     #print numUniqueChars("hello")
     #print numUniqueWords("Hello to all my friends out out there.")
     #print numUniqueWordsInSentences(["hello","from","mars"])
+    
     s= loadFasta("pdbaanr")
     tags = findHISTags(s)
     print len(tags.keys()), "unique HIS tags found!"
     print tags
     
+    """
     sequences = []
     for record in SeqIO.parse('pdbaanr','fasta'):
         seq = Sequence(record.id, record.seq)
         sequences.append(seq)
     tags = findHISTags(s)
+    """
     #print len(tags.keys()), "unique HIS tags found!"
     #print tags
     
