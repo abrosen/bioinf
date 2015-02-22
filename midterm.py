@@ -1,4 +1,6 @@
 from Bio.PDB import *
+import matplotlib.pyplot as plt
+import numpy as np
 
 def getStruct(target):
     parser = PDBParser(PERMISSIVE=0)
@@ -38,5 +40,21 @@ def dist(r1, r2):
 s = getStruct("4HKD.pdb")
 c = getChain(s,'A')
 d = getDists(c)
-for i in d:
-    print i
+data =  np.array(d)
+
+
+#for i in range(len(data)):
+#    data[10][i] =5
+
+
+
+# data.T for transpose
+# pcolormesh faster than pcolor, and I'm demoing on a laptop
+plt.pcolor(data,norm=None,cmap ="RdBu", edgecolors='k')   #(data[:,::-1])
+plt.colorbar()
+
+
+
+# display the graph
+plt.show()  #savefig to save it instead
+plt.close()
