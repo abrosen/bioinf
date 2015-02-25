@@ -14,7 +14,8 @@ def getChain(structure, chain):
 def getDists(chain):
     residues =  []
     for r in chain.get_residues():
-        #dunno why water is a residue, unneeded here since I'm comparing CA atoms
+        #dunno why water is a residue
+        #unneeded here since I'm comparing CA atoms
         if r.get_resname() == 'HOH':
             continue
         residues.append(r)
@@ -34,17 +35,31 @@ def dist(r1, r2):
     defined by distance between 
     """
     #print r1, r2
-    return r1['CA'] - r2['CA']
+    center = 'CA'
+    try:
+        distance  = r1[center] - r2[center]
+        return distance
+    except Exception:
+        print r1, r2
+        return 0
 
 
-s = getStruct("4HKD.pdb")
+#read raw input
+thingy = raw_input("Please enter the PBD file you want:\n")
+
+
+pdbl = PDBList()
+pdbl.retrieve_pdb_file(thingy,pdir='.')
+
+target = 'pdb'+thingy.lower() +'.ent'
+
+
+s = getStruct(target)
 c = getChain(s,'A')
 d = getDists(c)
 data =  np.array(d)
 
 
-#for i in range(len(data)):
-#    data[10][i] =5
 
 
 
@@ -52,8 +67,6 @@ data =  np.array(d)
 # pcolormesh faster than pcolor, and I'm demoing on a laptop
 plt.pcolor(data,norm=None,cmap ="RdBu", edgecolors='k')   #(data[:,::-1])
 plt.colorbar()
-
-
 
 # display the graph
 plt.show()  #savefig to save it instead
