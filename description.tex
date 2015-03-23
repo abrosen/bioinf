@@ -8,15 +8,30 @@
 \begin{document}
 \maketitle
 
-My group's project focuses on the automated design of small interfering or silencing RNA to attack a family of viruses. 
-
+My group's project focuses on the automated design of small interfering or silencing RNA to attack a genus of viruses. 
+We plan on initially testing our platform with the Ebolavirus genus.
 The steps are as follows:
 
 \begin{enumerate}
 	\item The genomes of the species of viruses are sent to our webserver.  
 	I'm assuming them to be in FASTA format.
 	\item The web server calls a sequence alignment tool.
-	This sequence
+	\item The sequence alignment tool searches for shared sequences among the genomes and outputs these shared sequences.
+	\item These shared sequences are run through another sequence alignment, this comparing it to the human genome, since we don't want to target humans with this. 
+	\item These sequences are passed to a siRNA generating program, which outputs siRNA in some parsable format.
+	\item We check the siRNA sequences against the human genome, again to make sure we aren't giving something nasty to humans.
+	\item Webserver goes `ding!' and hands back the appropriate siRNA to the user.
 \end{enumerate}
 
+
+
+My part in our group is to write the webserver.
+This essentially  means I need to make a front-facing web page which accepts the input to our program and feeds it into our python scripts and prints the corresponding output.
+
+For the sake of completeness:
+\begin{description}
+	\item[input] Virus genomes via a FASTA format via file or raw text.
+	\item[output] siRNA output to screen in FASTA format.
+	
+\end{description}
 \end{document}
