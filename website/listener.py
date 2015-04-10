@@ -1,6 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import cgi
 import time
+import json
 
 rna_form_page = b"""
 
@@ -47,15 +48,17 @@ class InitialHandler(BaseHTTPRequestHandler):
         
         
         open("uploads/"+ str(int(time.time()*1000))+filename, "wb").write(data)
+        open('emails.txt', "a").write(filename + " " + email + "\n")
         self.send_response(202)
         self.send_header('Content-type','text/html')
         self.end_headers()
-        self.wfile.write(b"Success. Go Away and stop bothering me.")
+        self.wfile.write(b"Success. Go away and stop bothering me and I'll email you later.")
 
 
 def run(server_class=HTTPServer, handler_class=InitialHandler):
     server_address = ('', 8000)
     httpd = server_class(server_address, handler_class)
     httpd.serve_forever()
+
 
 run()
