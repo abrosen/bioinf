@@ -10,9 +10,10 @@
 	\maketitle
 	
 	I decided to focus on the paper looking at anti-influenza aptamers  \cite{musafia2014designing}.
+	This may have been a mistake but I'm too far into this paper to turn back.
 	% I might not understand it well, but I'll damn well \textbf{try}
 	
-	
+	\subsubsection*{Description}
 	
 	Musafia \textit{et al} examined a new way of fighting the influenza virus.
 	Influenza is a particularly common viral disease that millions of people each year.
@@ -35,20 +36,41 @@
 		
 	The method description involves a lengthy description of preparation  for biochemical experiments.  
 	I won't pretend to understand the specifics, but this process describes how Musafia \textit{et al}  created their solutions and how a scientist\footnote{Unfortunate grad student.} could recreate it.
-	
-	
-	The experiment itself was conducted on mice.
+	The experiment to establish the efficacy of aptamers was conducted on mice.
 	The aptamers were applied to the mice premixed with the influenza virus.
 	
-	
-	Their methods and models seem to be fairly effective.
-	Method found better sequences
-	Model is okay
-	
-	Might have been better to compare to aptamers that were closely related as well, simulating a slight mutation.
+	This appears to have been done for a total of 96 aptamers. 
+	Once the relative binding affinities \footnote{compared to BV02's ability to bind to viral hemagglutinin} were established, these aptamers were unceremoniously slapped into a database.
+	Every fourth aptamer was noted as a member of the test set, and the remaining aptamers were used to create the training set.
 	
 	
+	These sequences were analyzed by QSAR to  
+	
+	Various features were isolated which impacted the aptamers ability to bind to  
+	
+	
+	\subsubsection*{Effectiveness}
+	Musafia \textit{et al}'s results seem extremely promising. \cite{musafia2014designing}
+	\subsubsection*{Relevence To Term Project}
+	Not incredibly relevant.  
+	Our project focuses on generating potential siRNA candidates for attacking a family of viruses.
+	This  paper focuses on  using a machine learning algorithm to predict the effectiveness of an aptamer binding to influenza.
+	
+	
+	\subsubsection*{Improvements}
+	The first thing that raised my eyebrows  was that SELEX generated $ 10^{13 }$  to $ 10^{15} $ random sequences.
+	That seems like an excessively large search space of random material, but this may be standard operating procedure for this field (again, I'm not a biologist).
+	Since the user will be selecting which of these random sequences should be enriched, there's presumably some kind of scoring mechanism that can be used as a fitness function.
+	
+	Perhaps it would be possible to craft a genetic algorithm that does the same thing, but with a much smaller population than $ 10^{13} $ each generation.
+	Select the best 100 sequences and apply  crossover and mutation we stop seeing improvement for a number of generations.
 	
 	\bibliography{bio}
 	\bibliographystyle{plain}
+	
+	\subsubsection*{Additional comments}
+	Under the ``Training and Test Data Sets for QSAR Study'' section, fourth is misspelled as ``forth.''
+	
+	%Also in doing some background research, I came across charts and figures that were created by scientists who a apparently world class biologists, yet somehow possessed of the need to use Comic Sans in their figures.
+	%I have no explanation for this. 
 \end{document}
