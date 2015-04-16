@@ -21,12 +21,12 @@
 	The primary mechanism of spreading  by coughing or sneezing \cite{stephenson2002epidemiology}.
 	Expelled viral particles then bind to the victim's respiratory epithelium, a lining in the respiratory tract.
 	
-	Musafia \textit{et al} study the use of an aptamer to block the virus from attaching to the respiratory epithelium, inhibiting inflection.
+	Musafia \textit{et al} study the use of an aptamer to block the virus from attaching to the respiratory epithelium, inhibiting infection.
 	Aptamers are a type of molecule called oligonucleotides.
 	These molecules are single-stranded DNA or RNA of approximately 15-45 nucleotides in length. 
 	Aptamers  are highly discriminating and can be created to bind to very specific targets, while not binding to closely related ``targets.''\footnote{As far as I understand it.}
 	
-	The process of generating aptamers is called ``systematic evolution of ligands by exonential enrichment,'' or SELEX.
+	The process of generating aptamers is called ``Systematic Evolution of Ligands by EXonential enrichment,'' or SELEX.
 	This process generates a library of $ 10^{13} $ to $ 10 ^{15} $ random oligonucleotides, each 20-100 nucleotides long.
 	The library is searched for sequences that can interact with the target; those few are chosen for the enrichment process.
 	
@@ -34,16 +34,16 @@
 	BV02 had been previously shown to be effective at preventing influenza infection by blocking the viral hemagglutinin \cite{jeon2004dna}.
 	This aptamer was chosen by Musafia \textit{et al} as the starting point and base comparison to the other aptamers created by the authors.
 		
-	The method description involves a lengthy description of preparation  for biochemical experiments.  
+	The method description involves a lengthy description of preparation for biochemical experiments.  
 	I won't pretend to understand the specifics, but this process describes how Musafia \textit{et al}  created their solutions and how a scientist\footnote{Unfortunate grad student.} could recreate it.
 	The experiment to establish the efficacy of aptamers was conducted on mice.
 	The aptamers were applied to the mice premixed with the influenza virus.
+	I don't have the experience to judge if this is an accurate representation of infection ``in the wild.''
 	
-	This appears to have been done for a total of 96 aptamers. 
-	Once the relative binding affinities \footnote{compared to BV02's ability to bind to viral hemagglutinin} were established, these aptamers were unceremoniously slapped into a database.
+	
+	This process was performed for a total of 96 aptamers. 
+	Once the relative binding affinities \footnote{compared to BV02's ability to bind to viral hemagglutinin.} were established, these aptamers were unceremoniously slapped into a database.
 	Every fourth aptamer was noted as a member of the test set, and the remaining aptamers were used to create the training set.
-	
-	
 	
 	Various features were isolated which impacted the aptamers ability to bind to viral hemagglutinin.
 	The effectiveness was impacted primarily by the aptamer's size, secondary structure, and the presence of repeated C nucleotides, among others.
@@ -55,12 +55,10 @@
 	They  were able to find the 6 most relevant descriptors which defined the effectiveness of the binding.
 	Their algorithm was able to successfully predict the binding affinity of the aptamers.
 
-	\subsubsection*{Relevence To Term Project}
-	Not incredibly relevant.  
+	\subsubsection*{Relevence To Term Project}  
 	Our project focuses on generating potential siRNA candidates for attacking a family of viruses.
 	This  paper focuses on  using a machine learning algorithm to predict the effectiveness of an aptamer binding to influenza.
-	
-	
+	The relevance to our project is limited; the workflow for creating siRNA requires no machine learning and is fairly straightforward. 
 	\subsubsection*{Improvements}
 	The first thing that raised my eyebrows  was that SELEX generated $ 10^{13 }$  to $ 10^{15} $ random sequences.
 	That seems like an excessively large search space of random material, but this may be standard operating procedure for this field (again, I'm not a biologist).
