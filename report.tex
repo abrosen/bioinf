@@ -34,7 +34,14 @@ Creating and maintaining server
 Obtaining tools for everyone else
 Creating email responder
 
+cite each of the installed tools
+
+BLAST, blastx, biopython, RNAfold, human genome,
+
 \subsection{Implementation}
+
+
+
 
 \subsubsection{BLAST}
 
@@ -44,6 +51,10 @@ Our project needed to be able
 \subsubsection{Server}
 
 \subsubsection{Scheduler}
+
+
+Once fasta file is retrieved, the scheduler spins up a new thread start the task. 
+The thread is not a daemon, os it will live on.
 
 \subsubsection{Email}
 
