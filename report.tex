@@ -28,10 +28,17 @@ Symptoms of Ebola virus disease (EVD) include: fever, chills, fatigue, weakness,
 These symptoms appear within eight to ten days, on average \cite{centers20152014}.
 
 
-This outbreak primarily affected people in Guinea, Liberia, and Sierra Leone, with additional cases reported in Nigeria, Mali, and Senegal \cite{centers20152014} .
+This outbreak primarily affected people in Guinea, Liberia, and Sierra Leone, with additional cases reported in Nigeria, Mali, and Senegal (Figure \ref{fig:west-africa-distribution-map} ) \cite{centers20152014}.
 Thus far, there have been an estimated 25,907 infected in 2014 outbreak, and nearly 11,000 people have succumbed to the disease \cite{centers20152014}.
 Two cases of Ebola were imported to the United States and was spread to two nurses. 
 This, plus cases Spain and the United Kingdom sparked a large level of concern worldwide  \cite{levin2015ebola} \cite{ready}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{west-africa-distribution-map}
+\caption{Map of total cases of the 2014 Zaire Ebolavirus outbreak. Source: Center for Disease Control \cite{centers20152014}.}
+\label{fig:west-africa-distribution-map}
+\end{figure}
 
 
 % prevention
@@ -62,31 +69,57 @@ These conserved regions would then be compared against the human genome using BL
 Any sequence that was shared with the human genome would be filtered out of output for the next group, since we targt that sequence with an siRNA, it could potentially target that sequence in humans.\footnote{This is generally considered a bad idea}
 
 The second group takes the conserved regions that did not show up in the human genome and uses those to design siRNA to bind with the virus's mRNA.
-The resulting siRNA needs to then be compared against the human genome, for the same reasons as the first check
+The resulting siRNA needs to then be compared against the human genome, for the same reasons as the first check.
+This would output a fasta file containing the siRNA sequences that would target the genus of virus.
+These potential siRNA should be further analyzed for any consequences.
+A member of the group also implemented an algorithm to estimate the amount of mutations it would take for the virus to render the siRNA ineffective.
+
 
 I was the third group and my responsibilities were quite broad.
-My responsibilities included helping set up the server we would use for our application.
+\begin{itemize}
+	\item I needed to write a web application to accept a FASTA file from the user.
+	This file would then be passed the beginning of the first group's code. 
+	I could accomplish this by spinning up a thread that called the first function needed to run.
+	\item I needed to ensure that the publicly accessible web application did not have write capabilities on the server other than writing the file.\footnote{And I just thought of an attack!  I could upload a very, very, large file.  I'm not sure what this would do, but it would probably not be good.} 
+	\item I was to help setup the webserver we would use for our application: \texttt{apollo}.\footnote{Highly germane, since Apollo's portfolio includes plagues and medicine.}
+	\item I needed to ensure the rest of the group had the tools they needed to run their python programs.
+	\item I made myself available to each of our group members to aid with debugging.
+\end{itemize}
+In summary, I needed to do some web programming and act as the IT guy.
 
 
-Creating and maintaining server
-Obtaining tools for everyone else
-Creating email responder
-
-%cite each of the installed tools
-
-BLAST, blastx, biopython, RNAfold, human genome,
 
 \subsection{Implementation}
+I worked with Brendan to install Ubuntu 14.04 on the server. 
+This was a fairly trivial task.
+
+I then had to acquire the various pieces of software we needed
+
+\begin{itemize}
+	\item BLAST \cite{blast}
+	\item clustalw \cite{thompson2002multiple}
+	\item biopython \cite{cock2009biopython}
+	\item RNAfold \cite{lorenz2011viennarna}
+	\item human genome
+\end{itemize}
+
+
+
+I will talk specifically about the goal of each part of the application and my implementation of it.
 
 
 
 
-\subsubsection{BLAST}
-
-Our project needed to be able 
 
 
-\subsubsection{Server}
+
+\subsubsection{Application}
+The first part of the application is the part the user sees.
+
+%insert screenshot here
+pic:
+
+
 
 \subsubsection{Scheduler}
 
@@ -102,10 +135,23 @@ The thread is not a daemon, os it will live on.
 \section{Evaluation}
 
 \subsection{Test Case}
-We used a fasta file of five species of the Ebola virus as the focus
+We used a fasta file of the five species of the Ebolavirus as our initial input and test case for the program.
 
 \subsection{Deliverables}
-The project was not fully completed in time.
+A deadline for combining the code was set for April 19th and not met.
+There are a number of reasons for this, but I do not believe that the problem was too difficult or large.
+
+I observed a number bad coding practices during the project.
+One group member was using Python 3.4 despite the rest of the group working in 2.7.
+Many members hardcoded file names into commands and wrote duplicate components.
+
+
+None of these alone were an issue that completely impeded the implementation, or even together, but were symptoms of the true issues:   a lack of communication and miscommunication.
+It seemed like every member assumed what the other member was doing without consulting anyone else.
+As a result, each member made their own assumptions about how the components their program were connecting to would work, even though we had determined that Fasta was the common input and output between files.
+
+
+I do  not believe that our final product in completely unusable, but 
 
 \bibliography{report}
 \bibliographystyle{plain}
