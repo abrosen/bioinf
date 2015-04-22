@@ -17,10 +17,16 @@
 
 \subsection{Motivation}
 Our primary motivation for our project was the 2014 Ebola outbreak.
-This outbreak affected people in Sierra Leone, adoasdnf, and adsfj, and killed more than X people.
-This insp
+%which species 
+
+%What does Ebolavirus do?
 
 
+This outbreak primarily affected people in Guinea, Liberia, and Sierra Leone, with additional cases reported in Nigeria, Mali, and Senegal \cite{centers20152014} .
+
+Thus far, there have been an estimated 25,907 infected with the Zaire , and nearly 11,000 people have succumbed to the disease \cite{centers20152014}.
+Two cases of Ebola were imported to the United States and was spread to two nurses. 
+This, plus cases Spain and the United Kingdom caused a large level of concern \cite{levin2015ebola} \cite{ready}.
 
 \subsection{siRNA  Generator}
 shRNA is precursor to siRNA
@@ -32,12 +38,24 @@ Binds to mRNA in virus in order to render it ineffective.
 
 
 \subsection{Assigned Tasks}
+Our group separated into three rough groups to tackle each of the three tasks we identified.
+
+The first group was tasked with creating a script to identify the conserved region within the species of virus.
+These conserved regions would then be compared against the human genome using BLAST \cite{blast}.
+Any sequence that was shared with the human genome would be filtered out of output for the next group, since we targt that sequence with an siRNA, it could potentially target that sequence in humans.\footnote{This is generally considered a bad idea}
+
+The second group takes the conserved regions that did not show up in the human genome and uses those to design siRNA to bind with the virus's mRNA.
+The resulting siRNA needs to then be compared against the human genome, for the same reasons as the first check
+
+I was the third group and my responsibilities were quite broad.
+
+
 
 Creating and maintaining server
 Obtaining tools for everyone else
 Creating email responder
 
-cite each of the installed tools
+%cite each of the installed tools
 
 BLAST, blastx, biopython, RNAfold, human genome,
 
