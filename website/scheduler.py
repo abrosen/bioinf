@@ -16,8 +16,13 @@ def dummy(filename):
 
 #given the file and the first script
 def runTheJob(filename, script=dummy):
-    t = threading.Thread(target= script, args = (filename,) , daemon=False)
-    t.start() 
+    t = threading.Thread(target= script, args = (filename,))
+    t.daemon = True
+    try:
+        t.start()
+    except e:
+        print("Something went wrong and someone isn't getting their data.", e)
+
 
 
 def runScheduler():

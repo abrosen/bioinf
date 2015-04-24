@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{url}
 \author{Andrew Rosen}
 \title{Group Project Report: siRNA Generator}
 \date{}
@@ -106,25 +107,39 @@ I then had to acquire the various pieces of software we needed, which included:
 \end{itemize}
 
 I will talk specifically about the goal of each part of the application and my implementation of it.
+You can find my code on github: 
+
+\url{https://github.com/abrosen/bioinf/tree/master/website/}
 
 \subsubsection{Application}
 The first part of the application is the part the user sees.
-I created a fairly simple webserver using Python.
- 
-
-For right now, it listens on port 8000.
-
+I created a fairly simple webserver using Python, which I named \texttt{listener}.
+\texttt{listener} listens on port 8000 for an incoming get request and then serves a webpage (Figure \ref{fig:website}). 
+The webpage is stored in a string in \texttt{listener}.
 
 %insert screenshot here
-pic:
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{website}
+\caption{The upload form. This is output from the \texttt{listener}.  
+	The user uploads a fasta file and their email address.}
+\label{fig:website}
+\end{figure}
 
+
+
+Once \texttt{listener} gets a POST from the user, the \texttt{listener} timestamps the file  and email.
+They are stored locally and the fasta file will be read by the \texttt{scheduler}.
+This separation of exists to prevent malicious users from having write access by compromising the python program that will be performing all the computations.
 
 
 \subsubsection{Scheduler}
-Once fasta file is retrieved, the scheduler spins up a new thread start the task. 
-The thread is not a daemon and it will run independently of \texttt{scheduler} in the event \texttt{scheduler} crashes.
+The scheduler scans the current directory for new files.
+Upon finding new fasta files, it feeds them to the first part of the siRNA sequencer.
 
-\subsubsection{Email}
+In order to do this in a responsive manner, I have \texttt{scheduler} check every 10 seconds for a new file and boot up a new thread.
+The thread is not a daemon and it will run independently of \texttt{scheduler} in the event \texttt{scheduler} crashes.
+Once the scripts are done executing, the \texttt{scheduler} emails the user with the results.
 
 
 
@@ -132,7 +147,9 @@ The thread is not a daemon and it will run independently of \texttt{scheduler} i
 \section{Evaluation}
 
 \subsection{Test Case}
-We used a fasta file of the five species of the Ebolavirus as our initial input and test case for the program.
+We planned on using a fasta file of the five species of the Ebolavirus as our initial input and test case for the entire program.
+For my part of the program, I tested \texttt{listener} by uploading various files to \texttt{apollo} via the webpage form and verifying they were intact on the server side.
+
 
 \subsection{Deliverables}
 A deadline for combining the code was set for April 19th and not met.
@@ -148,7 +165,7 @@ It seemed like every member assumed what the other member was doing without cons
 As a result, each member made their own assumptions about how the components their program were connecting to would work, even though we had determined that Fasta was the common input and output between files.
 
 
-I do  not believe that our final product in completely unusable, but 
+I do not believe that our final product in completely unusable, but it requires more work to put completely together.
 
 \bibliography{report}
 \bibliographystyle{apalike}
