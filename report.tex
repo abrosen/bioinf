@@ -28,12 +28,12 @@ Symptoms of Ebola virus disease (EVD) include: fever, chills, fatigue, weakness,
 These symptoms appear within eight to ten days, on average \cite{centers20152014}.
 
 
-This outbreak primarily affected people in Guinea, Liberia, and Sierra Leone, with additional cases reported in Nigeria, Mali, and Senegal (Figure \ref{fig:west-africa-distribution-map} ) \cite{centers20152014}.
+This outbreak primarily affected people in Guinea, Liberia, and Sierra Leone, with additional cases reported in Nigeria, Mali, and Senegal (Figure \ref{fig:west-africa-distribution-map}) \cite{centers20152014}.
 Thus far, there have been an estimated 25,907 infected in 2014 outbreak, and nearly 11,000 people have succumbed to the disease \cite{centers20152014}.
 Two cases of Ebola were imported to the United States and was spread to two nurses. 
 This, plus cases Spain and the United Kingdom sparked a large level of concern worldwide  \cite{levin2015ebola} \cite{ready}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.5\linewidth]{west-africa-distribution-map}
 \caption{Map of total cases of the 2014 Zaire Ebolavirus outbreak. Source: Center for Disease Control \cite{centers20152014}.}
@@ -46,7 +46,8 @@ Ebola can be fought, but the most effective method is prevention.
 Ebola does not spread easily when compared to other viruses such as influenza.
 Infection requires contact with the bodily fluids of a infected person who is displaying symptoms of Ebola virus disease \cite{wongcharacterization} \cite{team2014ebola}.
 Thus, the most effective way currently available is to quarantine the infected individuals and inform those who have had contact with the infected \cite{team2014ebola}.
-% suspicion, 
+Meanwhile, research into various treatments such as vaccines \cite{geisbert2015emergency} or siRNAs \cite{lipid} has had renewed interest due to the severity of this outbreak.
+
 
 \subsection{Our approach}
 We chose using siRNA since a couple of group members were involved in active research on siRNA and were very familiar with it.
@@ -54,6 +55,8 @@ We chose using siRNA since a couple of group members were involved in active res
 shRNA is precursor to siRNA
 Binds to mRNA in virus in order to render it ineffective.
 
+
+Our idea seems to have some merit, given that research is being actively done on siRNA Ebola treatments \cite{lipid}.
 
 %Generalize it.
 \section{Contributions}
@@ -66,7 +69,7 @@ Our group separated into three rough groups to tackle each of the three tasks we
 
 The first group was tasked with creating a script to identify the conserved region within the species of virus.
 These conserved regions would then be compared against the human genome using BLAST \cite{blast}.
-Any sequence that was shared with the human genome would be filtered out of output for the next group, since we targt that sequence with an siRNA, it could potentially target that sequence in humans.\footnote{This is generally considered a bad idea}
+Any sequence that was shared with the human genome would be filtered out of output for the next group, since we targt that sequence with an siRNA, it could potentially target that sequence in humans.\footnote{This is generally considered a bad idea.}
 
 The second group takes the conserved regions that did not show up in the human genome and uses those to design siRNA to bind with the virus's mRNA.
 The resulting siRNA needs to then be compared against the human genome, for the same reasons as the first check.
@@ -90,31 +93,27 @@ In summary, I needed to do some web programming and act as the IT guy.
 
 
 \subsection{Implementation}
-I worked with Brendan to install Ubuntu 14.04 on the server. 
+I worked with Brendan to install Ubuntu 14.04 LTS on the server. 
 This was a fairly trivial task.
 
-I then had to acquire the various pieces of software we needed
+I then had to acquire the various pieces of software we needed, which included:
 
 \begin{itemize}
-	\item BLAST \cite{blast}
-	\item clustalw \cite{thompson2002multiple}
-	\item biopython \cite{cock2009biopython}
-	\item RNAfold \cite{lorenz2011viennarna}
-	\item human genome
+	\item BLAST \cite{blast} and clustalw \cite{thompson2002multiple} for sequence alignment.
+	\item Biopython \cite{cock2009biopython}, which contains many useful biology related python scripts and classes.
+	\item RNAfold \cite{lorenz2011viennarna},  which predicts the secondary structures of RNA
+	\item I also obtained the necessary human genome files to perform sequence alignment from NCBI.
 \end{itemize}
-
-
 
 I will talk specifically about the goal of each part of the application and my implementation of it.
 
-
-
-
-
-
-
 \subsubsection{Application}
 The first part of the application is the part the user sees.
+I created a fairly simple webserver using Python.
+ 
+
+For right now, it listens on port 8000.
+
 
 %insert screenshot here
 pic:
@@ -122,10 +121,8 @@ pic:
 
 
 \subsubsection{Scheduler}
-
-
 Once fasta file is retrieved, the scheduler spins up a new thread start the task. 
-The thread is not a daemon, os it will live on.
+The thread is not a daemon and it will run independently of \texttt{scheduler} in the event \texttt{scheduler} crashes.
 
 \subsubsection{Email}
 
@@ -142,7 +139,7 @@ A deadline for combining the code was set for April 19th and not met.
 There are a number of reasons for this, but I do not believe that the problem was too difficult or large.
 
 I observed a number bad coding practices during the project.
-One group member was using Python 3.4 despite the rest of the group working in 2.7.
+One group member was using Python 3.4 despite the rest of the group working in 2.7.\footnote{Granted, I did that too, but it was a deliberate choice on my part.  That was in the webserver code, and it doesn't directly interact with any code that the group has to write.}
 Many members hardcoded file names into commands and wrote duplicate components.
 
 
@@ -154,6 +151,6 @@ As a result, each member made their own assumptions about how the components the
 I do  not believe that our final product in completely unusable, but 
 
 \bibliography{report}
-\bibliographystyle{plain}
+\bibliographystyle{apalike}
 
 \end{document}

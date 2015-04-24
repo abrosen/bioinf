@@ -16,8 +16,10 @@ rna_form_page = b"""
 
 
 <input type="file" name="data"/>
-<input type="text" name="email"/>
+<br><br>
 
+Your email: <input type="text" name="email"/>
+<br><br>
 <input type="submit" value="Submit File"/>
 </form>
 
@@ -61,4 +63,7 @@ def run(server_class=HTTPServer, handler_class=InitialHandler):
     httpd.serve_forever()
 
 
-run()
+if __name__ == '__main__':
+    run()
+
+
