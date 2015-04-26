@@ -69,15 +69,16 @@ In this section, I will talk about the division of work between each member of t
 \subsection{Assigned Tasks}
 Our group separated into three rough groups to tackle each of the three tasks we identified.
 
-The first group was tasked with creating a script to identify the conserved region within the species of virus.
+The first group was tasked with creating a script to identify the conserved region within the species of viruses.
 These conserved regions would then be compared against the human genome using BLAST \cite{blast}.
-Any sequence that was shared with the human genome would be filtered out of output for the next group, since we targt that sequence with an siRNA, it could potentially target that sequence in humans.\footnote{This is generally considered a bad idea.}
+Any sequence that was shared with the human genome would be filtered out of output for the next group, since by targeting that sequence with an siRNA, it could potentially target that sequence in humans.\footnote{This is generally considered a bad idea as I understand it.}
+These sequences are output as a FASTA file.
 
 The second group takes the conserved regions that did not show up in the human genome and uses those to design siRNA to bind with the virus's mRNA.
-The resulting siRNA needs to then be compared against the human genome, for the same reasons as the first check.
-This would output a fasta file containing the siRNA sequences that would target the genus of virus.
+The resulting siRNA needs to then be compared against the human genome, for the same reasons the first group performed a check.
+This would output a FASTA file containing the siRNA sequences that would target the genus of virus.
 These potential siRNA should be further analyzed for any consequences.
-A member of the group also implemented an algorithm to estimate the amount of mutations it would take for the virus to render the siRNA ineffective.
+A member of the group also implemented an algorithm to estimate the amount of mutations it would take for the virus to render the siRNA treatment ineffective.
 
 
 I was the third group and my responsibilities were quite broad.
@@ -86,11 +87,11 @@ I was the third group and my responsibilities were quite broad.
 	This file would then be passed the beginning of the first group's code. 
 	I could accomplish this by spinning up a thread that called the first function needed to run.
 	\item I needed to ensure that the publicly accessible web application did not have write capabilities on the server other than writing the file.\footnote{And I just thought of an attack!  I could upload a very, very, large file.  I'm not sure what this would do, but it would probably not be good.} 
-	\item I was to help setup the webserver we would use for our application: \texttt{apollo}.\footnote{Highly germane, since Apollo's portfolio includes plagues and medicine.}
+	\item I was to help setup the webserver we would use for our application: \texttt{apollo}.\footnote{A highly germane name for the server, since Apollo's portfolio includes plagues and medicine.}
 	\item I needed to ensure the rest of the group had the tools they needed to run their python programs.
 	\item I made myself available to each of our group members to aid with debugging.
 \end{itemize}
-In summary, I needed to do some web programming and act as the IT guy.
+In summary, I needed to do some web programming and act as administrator for our server.
 
 
 
@@ -115,28 +116,30 @@ You can find my code on github:
 \subsubsection{Application}
 The first part of the application is the part the user sees.
 I created a fairly simple webserver using Python, which I named \texttt{listener}.
-\texttt{listener} listens on port 8000 for an incoming get request and then serves a webpage (Figure \ref{fig:website}). 
-The webpage is stored in a string in \texttt{listener}.
+The \texttt{listener} listens on port 8000 for an incoming get request and then serves a webpage (Figure \ref{fig:website}). 
+The webpage is stored as a string in \texttt{listener}.
 
 %insert screenshot here
 \begin{figure}
 \centering
 \includegraphics[width=0.5\linewidth]{website}
 \caption{The upload form. This is output from the \texttt{listener}.  
-	The user uploads a fasta file and their email address.}
+	The user uploads a FASTA file and their email address.
+	This information is stored in the server on files and read by \texttt{scheduler}.
+	}
 \label{fig:website}
 \end{figure}
 
 
 
-Once \texttt{listener} gets a POST from the user, the \texttt{listener} timestamps the file  and email.
-They are stored locally and the fasta file will be read by the \texttt{scheduler}.
+Once \texttt{listener} gets a POST from the user, the \texttt{listener} timestamps the received file and email.
+They are stored locally and the FASTA file will be read by the \texttt{scheduler}.
 This separation of exists to prevent malicious users from having write access by compromising the python program that will be performing all the computations.
 
 
 \subsubsection{Scheduler}
 The scheduler scans the current directory for new files.
-Upon finding new fasta files, it feeds them to the first part of the siRNA sequencer.
+Upon finding new FASTA files, it feeds them to the first part of the siRNA sequencer.
 
 In order to do this in a responsive manner, I have \texttt{scheduler} check every 10 seconds for a new file and boot up a new thread.
 The thread is not a daemon and it will run independently of \texttt{scheduler} in the event \texttt{scheduler} crashes.
@@ -149,7 +152,7 @@ The emails are sent from the server to the Computer Science department's server,
 \section{Evaluation}
 
 \subsection{Test Case}
-We planned on using a fasta file of the five species of the Ebolavirus as our initial input and test case for the entire program.
+We planned on using a FASTA file of the five species of the Ebolavirus as our initial input and test case for the entire program.
 For my part of the program, I tested \texttt{listener} by uploading various files to \texttt{apollo} via the webpage form and verifying they were intact on the server side.
 The most tedious part I had to test was the email portion. 
 Most mail servers I tried to use did not accept connections from computer.
@@ -166,7 +169,7 @@ Many members hardcoded file names into commands and wrote duplicate components.
 
 None of these alone were an issue that completely impeded the implementation, or even together, but were symptoms of the true issues:   a lack of communication and miscommunication.
 It seemed like every member assumed what the other member was doing without consulting anyone else.
-As a result, each member made their own assumptions about how the components their program were connecting to would work, even though we had determined that Fasta was the common input and output between files.
+As a result, each member made their own assumptions about how the components their program were connecting to would work, even though we had determined that FASTA was the common input and output between files.
 
 
 I do not believe that our final product in completely unusable, but it requires more work to put completely together.
