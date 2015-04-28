@@ -11,7 +11,7 @@ def ebola_conservative_regions (infile, outfile):
         current_file.write(line)
 
 def runBlast (infile, outfile):
-    os.system ("blastn -query %s -db /usr/local/blastdata/human_genomic -out %s.output -outfmt 0" % (infile,outfile))
+    os.system ("blastn -query %s -db /usr/local/blastdata/human_genomic -word_size 7 -out %s.output -outfmt 0" % (infile,outfile))
 
 #ebola_conservative_regions ('teflon_segs.txt', 'teflon_segment')
 
