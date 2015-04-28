@@ -1,7 +1,7 @@
 import os
 import time 
-import threading #upgrade this to multiprocessing
-
+import threading #upgrade this to multiprocessing 
+from Andres_optimizing_v2 import have_a_blast as foo
 
 
 
@@ -15,14 +15,12 @@ def dummy(filename):
     print(filename, "dum dum")
 
 #given the file and the first script
-def runTheJob(filename, script=dummy):
-    t = threading.Thread(target= script, args = (filename,))
+def runTheJob(filename, script=foo):
+    t = threading.Thread(target= script)#, args = (filename,))
     t.daemon = True
-    try:
-        t.start()
-    except e:
-        print("Something went wrong and someone isn't getting their data.", e)
-
+    print "starting", script
+    t.start()
+    t.join()
 
 
 def runScheduler():
@@ -34,10 +32,10 @@ def runScheduler():
                 QUEUE.append(x)
         if len(QUEUE):
             task = QUEUE.pop()
-            runTheJob(task)
+            runTheJob(task,foo)
 
 def doTheThing():
-    runTheJob("someName")
+    runTheJob("andres",foo)
 
 if __name__ == '__main__':
     doTheThing()

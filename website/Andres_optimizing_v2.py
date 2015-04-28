@@ -14,9 +14,9 @@
 
 # BEGIN CODE
 
-def reformat():
+def reformat(filename):
 
-	shoe = open('virus.fas','r')
+	shoe = open(filename,'r')
 	zapato = open('viral.fas', 'a')
 	header = 0
 
@@ -246,24 +246,12 @@ def slip_n_slide():
 
 def have_a_blast():
 
-	print
-	print
-	print "Welcome human user. Like you, I like to get things right."
-	print
-	print
-	print "Ergo, the longer your query genome the longer I will take to finish"
-	print
-	print
-	raw_input("PRESS ENTER IF YOU DARE")
-	print
-	print
-
-#	reformat()
-#	alineacion()
+	#reformat(filename)
+	#alineacion()
 
 	GANAMOS = slip_n_slide()
 	print len(GANAMOS)
-	INCA = open('andres.fas','a')
+	INCA = open("andres.fas",'w')
 
 	fasta_id = -1 	
 
@@ -279,15 +267,7 @@ def have_a_blast():
 # DONT FORGET TO RUN THE PROGRAM!
 
 # Final program to run is to_blast(), which is commented out below
-have_a_blast()
 
-print "you file has been written under the name andres.fas"
-print
-print
-raw_input("Thank you for being so patient and press ENTER when you are done")
-print
-print
-print "done dre!"
+if __name__ == '__main__':
+	have_a_blast()
 
-
-# END CODE
