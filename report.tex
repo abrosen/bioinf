@@ -162,17 +162,13 @@ I was only able to send mail directly to the department's server when I was logg
 A deadline for combining the code was set for April 19th and not met.
 There are a number of reasons for this, but I do not believe that the problem was too difficult or large.
 
-I observed a number bad coding practices during the project.
-One group member was using Python 3.4 despite the rest of the group working in 2.7.\footnote{Granted, I did that too, but it was a deliberate choice on my part.  That was in the webserver code, and it doesn't directly interact with any code that the group has to write.}
-Many members hardcoded file names into commands and wrote duplicate components.
+I believe the main problem was that our group fractured into many groups of one member, which resulted lack of communication.
+Each member made their own assumptions about how the components their program were connecting to would work, even though we had determined that FASTA was the common input and output between files.
+I had assumed that we would be using classes from biopython to store the data intermediately, but I must have not expressed this properly to the members of the group and should have made more of an effort to do so.
 
-
-None of these alone were an issue that completely impeded the implementation, or even together, but were symptoms of the true issues:   a lack of communication and miscommunication.
-It seemed like every member assumed what the other member was doing without consulting anyone else.
-As a result, each member made their own assumptions about how the components their program were connecting to would work, even though we had determined that FASTA was the common input and output between files.
-
-
-I do not believe that our final product in completely unusable, but it requires more work to put completely together.
+We did meet later and managed to consolidate our code.  
+The individual pieces work, although they don't work \textit{together}.
+The final code can be seen on my GitHub repo, where we have my webserver code, \texttt{group\_one\_code.py}, and \texttt{siRNA.py}.
 
 \bibliography{report}
 \bibliographystyle{plain}
